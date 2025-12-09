@@ -152,7 +152,7 @@
         <button type="submit" class="submit-btn">Kirish</button>
 
         <div class="form-footer">
-            <p>Accountingiz yo'qmi? <a href="register.jsp">Ro'yxatdan o'ting</a></p>
+            <p>Accountingiz yo'qmi? <a href="/auth/register">Ro'yxatdan o'ting</a></p>
         </div>
     </form>
 </div>
