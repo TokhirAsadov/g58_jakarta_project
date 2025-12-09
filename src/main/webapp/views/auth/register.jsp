@@ -142,6 +142,12 @@
                 gap: 0;
             }
         }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -151,86 +157,41 @@
         <p>Platformamizga qo'shiling va barcha imkoniyatlardan foydalaning</p>
     </div>
 
-    <form class="register-form" id="registerForm" action="/register" method="post">
-        <div class="name-group">
-            <div class="input-group">
-                <label for="firstname">Ismingiz</label>
-                <input type="text" id="firstname" name="firstname" placeholder="Ismingiz" required>
-            </div>
-
-            <div class="input-group">
-                <label for="lastname">Familiyangiz</label>
-                <input type="text" id="lastname" name="lastname" placeholder="Familiyangiz" required>
-            </div>
-        </div>
+    <form class="register-form" id="registerForm" action="/auth/register" method="post">
 
         <div class="input-group">
             <label for="email">Email manzilingiz</label>
             <input type="email" name="email" id="email" placeholder="email@example.com" required>
+
+            <%
+                String errorEmail = (String) request.getAttribute("error_email");
+                out.println(errorEmail != null ? "<div class=\"error\">"+errorEmail+"</div>" :"");
+            %>
         </div>
 
         <div class="input-group">
             <label for="password">Parol yarating</label>
             <input type="password" name="password" id="password" placeholder="Kamida 8 ta belgidan iborat" required minlength="8">
+            <%
+                String errorPassword =(String) request.getAttribute("error_password");
+                out.println(errorPassword != null ? "<div class=\"error\">"+errorPassword+"</div>" :"");
+            %>
         </div>
 
         <div class="input-group">
             <label for="confirm-password">Parolni tasdiqlang</label>
-            <input type="password" id="confirm-password" placeholder="Parolingizni qayta kiriting" required>
+            <input type="password" name="re-password" id="confirm-password" placeholder="Parolingizni qayta kiriting" required>
+            <%
+                out.println(errorPassword != null ? "<div class=\"error\">"+errorPassword+"</div>" :"");
+            %>
         </div>
 
         <button type="submit" class="submit-btn">Ro'yxatdan o'tish</button>
 
         <div class="form-footer">
-            <p>Allaqachon accountingiz bormi? <a href="login.jsp">Kirish</a></p>
+            <p>Allaqachon accountingiz bormi? <a href="/auth/login">Kirish</a></p>
         </div>
     </form>
 </div>
-
-<script>
-    /*document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const firstname = document.getElementById('firstname').value;
-        const lastname = document.getElementById('lastname').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
-
-        // Parollarni solishtirish
-        if(password !== confirmPassword) {
-            alert('Parollar mos kelmadi! Iltimos, qayta tekshiring.');
-            return;
-        }
-
-        // Barcha maydonlarni tekshirish
-        if(firstname && lastname && email && password) {
-            console.log(firstname)
-            console.log(lastname)
-            console.log(email)
-            console.log(password)
-            fetch('http://localhost:8080/register',
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    method: "POST",
-                    body: JSON.stringify({firstname,lastname, email,password})
-                }
-            )
-                .then(response => response.json())
-                .then(json => {
-                    alert('Ro\'yxatdan o\'tish muvaffaqiyatli! Kirish sahifasiga o\'tilyapti...');
-                    console.log(json)
-                })
-                .catch(err => {
-                    console.log(err, "error--->")
-                })
-            // window.location.href = "login.jsp"; // Kirish sahifasiga o'tkazish
-        } else {
-            alert('Iltimos, barcha maydonlarni to\'ldiring!');
-        }
-    });*/
-</script>
 </body>
 </html>
