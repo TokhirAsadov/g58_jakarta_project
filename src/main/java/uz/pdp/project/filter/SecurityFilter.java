@@ -15,7 +15,8 @@ public class SecurityFilter implements Filter {
     private static final List<String> WHITE_URL = List.of(
             "/",
             "/auth/login",
-            "/auth/register"
+            "/auth/register",
+            "/book/list"
     );
 
     private static final Predicate<String> checkUrl = WHITE_URL::contains;
