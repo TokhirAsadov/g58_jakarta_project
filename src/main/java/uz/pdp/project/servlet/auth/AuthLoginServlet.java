@@ -1,4 +1,4 @@
-package uz.pdp.project.servlet;
+package uz.pdp.project.servlet.auth;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import uz.pdp.project.dao.UserDAO;
 import uz.pdp.project.entity.User;
+import uz.pdp.project.enums.UserStatus;
 import uz.pdp.project.utils.EmailUtil;
 import uz.pdp.project.utils.PasswordUtil;
 
@@ -44,6 +45,15 @@ public class AuthLoginServlet extends HttpServlet {
         Optional<User> optionalUser = userDAO.findByEmail(email);
         optionalUser.ifPresentOrElse(
                 (user) -> {
+                    if (!user.getStatus().equals(UserStatus.ACTIVE)){
+                        req.setAttribute("error_message","User is NOT ACTIVE");
+                        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/auth/login.jsp");
+                        try {
+                            dispatcher.forward(req,resp);
+                        } catch (ServletException | IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                     if (PasswordUtil.check(password, user.getPassword())){
                         HttpSession session = req.getSession();
                         session.setAttribute("id", user.getId());
@@ -54,10 +64,18 @@ public class AuthLoginServlet extends HttpServlet {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
+                    } else {
+                        req.setAttribute("error_message","Login or Password is not correct.");
+                        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/auth/login.jsp");
+                        try {
+                            dispatcher.forward(req,resp);
+                        } catch (ServletException | IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 },
                 () -> {
-                    req.setAttribute("error_message","User does not exist by email: "+email);
+                    req.setAttribute("error_message","Login or Password is not correct.");
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/views/auth/login.jsp");
                     try {
                         dispatcher.forward(req,resp);
