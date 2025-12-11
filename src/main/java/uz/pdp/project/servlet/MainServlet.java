@@ -14,7 +14,7 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("MainServlet Servlet is working.......");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/main.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/book/book_list.jsp");
         dispatcher.forward(req,resp);
     }
 }
