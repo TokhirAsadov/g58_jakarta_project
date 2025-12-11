@@ -1,4 +1,4 @@
-package uz.pdp.project.servlet;
+package uz.pdp.project.servlet.book;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,13 +9,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "BookListServlet", value = "/book/list")
-public class BookListServlet extends HttpServlet {
+@WebServlet(name = "BookCreateServlet", value = "/admin/book/create")
+public class BookCreateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Book List Servlet...");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/book/book_list.jsp");
+        System.out.println("Book Create Servlet...");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/book/book_create.jsp");
         dispatcher.forward(req,resp);
     }
 
