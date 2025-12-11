@@ -26,10 +26,15 @@
                         Aloqa
                     </a>
                 </li>
+                <% if ( "ADMIN".equals(session.getAttribute("role")) ) {%>
+                <li class="nav-item m-1">
+                    <a href="/admin/book/create" class="btn btn-success">Create Book</a>
+                </li>
+                <% } %>
             </ul>
 
             <ul class="navbar-nav">
-                <% if (request.getSession().getId() != null ) {%>
+                <% if (session.getAttribute("id") == null ) {%>
                 <li class="nav-item m-1">
                     <a href="/auth/login" class="btn btn-light">Login</a>
                 </li>
