@@ -130,6 +130,11 @@
             }
         }
     </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
 <div class="login-container">
@@ -137,6 +142,11 @@
         <h1>Login</h1>
         <p>Platformamizning barcha imkoniyatlaridan foydalaning</p>
     </div>
+
+    <%
+        Object errorMessage = request.getAttribute("error_message");
+        out.println(errorMessage != null ? "<div class=\"alert alert-danger\" role=\"alert\">"+errorMessage+"</div>" :"");
+    %>
 
     <form class="login-form" id="loginForm" action="/auth/login" method="post">
         <div class="input-group">
