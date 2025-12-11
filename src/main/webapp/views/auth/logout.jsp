@@ -10,152 +10,153 @@
 <head>
     <title>Login Page</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <!-- Custom CSS -->
+    <style>
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
+            justify-content: center;
         }
 
-        .login-container {
+        .logout-container {
+            max-width: 500px;
             width: 100%;
-            max-width: 450px;
-            background: white;
+            margin: 20px;
+        }
+
+        .logout-card {
             border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-
-        .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .login-header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .login-header p {
-            opacity: 0.9;
-        }
-
-        .login-form {
-            padding: 30px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border 0.3s ease;
-        }
-
-        .input-group input:focus {
-            border-color: #667eea;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            margin-top: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
         }
 
-        .submit-btn:hover {
+        .logout-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            border-bottom: none;
+            padding: 25px;
+        }
+
+        .user-info {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .btn-custom {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            border: none;
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            border: none;
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background: #5a6268;
             transform: translateY(-2px);
         }
 
-        .form-footer {
-            text-align: center;
-            margin-top: 25px;
-            color: #777;
+        .logout-icon {
+            font-size: 4rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
         }
 
-        .form-footer a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
+        .warning-note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
         }
 
-        .form-footer a:hover {
-            text-decoration: underline;
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
         }
 
-        @media (max-width: 480px) {
-            .login-container {
-                border-radius: 10px;
-            }
+        .feature-list li {
+            padding: 5px 0;
+        }
 
-            .login-header {
-                padding: 25px 20px;
-            }
-
-            .login-form {
-                padding: 25px 20px;
-            }
+        .feature-list li i {
+            color: #28a745;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-<div class="login-container">
-    <div class="login-header">
-        <h1>Login</h1>
-        <p>Platformamizning barcha imkoniyatlaridan foydalaning</p>
+<div class="logout-container">
+    <div class="card logout-card">
+        <div class="card-header text-center">
+            <div class="logout-icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h3 class="mb-0">Tizimdan Chiqishni Tasdiqlash</h3>
+        </div>
+
+        <div class="card-body p-4">
+
+
+            <!-- Tugmalar -->
+            <div class="row mt-4">
+                <div class="col-md-6 mb-2">
+                    <form action="/auth/logout" method="post" id="logoutForm">
+                        <button type="submit" class="btn btn-confirm btn-custom w-100">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Ha, Tizimdan Chiqish
+                        </button>
+                    </form>
+                </div>
+
+                <div class="col-md-6 mb-2">
+                    <a href="/book/list" class="btn btn-cancel btn-custom w-100">
+                        <i class="fas fa-times-circle me-2"></i>
+                        Back to home
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-
-    <form class="login-form" id="loginForm" action="/auth/login" method="post">
-        <div class="input-group">
-            <label for="email">Email manzilingiz</label>
-            <input type="email" id="email" name="email" placeholder="email@example.com" required>
-        </div>
-
-        <div class="input-group">
-            <label for="password">Parolingiz</label>
-            <input type="password" name="password" id="password" placeholder="Parolingizni kiriting" required>
-        </div>
-
-        <button type="submit" class="submit-btn">Kirish</button>
-
-        <div class="form-footer">
-            <p>Accountingiz yo'qmi? <a href="/auth/register">Ro'yxatdan o'ting</a></p>
-        </div>
-    </form>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
