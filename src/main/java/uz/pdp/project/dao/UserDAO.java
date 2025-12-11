@@ -22,11 +22,4 @@ public class UserDAO extends BaseDAO<User, String>{
             return Optional.empty();
         }
     }
-
-    public User save(User user) {
-        begin();
-        em.persist(user);
-        commit();
-        return user;
-    }
 }
