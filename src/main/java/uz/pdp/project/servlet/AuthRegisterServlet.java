@@ -34,7 +34,7 @@ public class AuthRegisterServlet extends HttpServlet {
         String rePassword = req.getParameter("re-password");
 
         if (!EmailUtil.validate(email)){
-            req.setAttribute("error_password","Password is invalid");
+            req.setAttribute("error_email","Email is invalid");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/views/auth/register.jsp");
             dispatcher.forward(req,resp);
         }
