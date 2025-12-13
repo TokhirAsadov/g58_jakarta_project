@@ -3,6 +3,8 @@ package uz.pdp.project.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,4 +21,14 @@ public class Upload extends Auditable{
     private Long size;
 
     private String mimeType; // content-type: document/json
+
+    @Builder(builderMethodName = "childBuilder")
+    public Upload(String id, LocalDateTime createdAt, LocalDateTime updatedAt, String originalName, String preparedName, String extension, Long size, String mimeType) {
+        super(id, createdAt, updatedAt);
+        this.originalName = originalName;
+        this.preparedName = preparedName;
+        this.extension = extension;
+        this.size = size;
+        this.mimeType = mimeType;
+    }
 }
