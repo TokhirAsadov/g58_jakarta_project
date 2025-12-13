@@ -148,7 +148,7 @@
         out.println(errorMessage != null ? "<div class=\"alert alert-danger\" role=\"alert\">"+errorMessage+"</div>" :"");
     %>
 
-    <form class="login-form" id="loginForm" action="/auth/login" method="post">
+    <form class="login-form" id="loginForm" action="/auth/login?next=${next}" method="post">
         <div class="input-group">
             <label for="email">Email manzilingiz</label>
             <input type="email" id="email" name="email" placeholder="email@example.com" required>
