@@ -23,7 +23,10 @@ public class AuthLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("AuthLoginServlet Servlet is working.......");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/auth/login.jsp");
+        String next = req.getParameter("next");
+        System.out.println("next1: "+next);
+        req.setAttribute("next",next);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/views/auth/login.jsp?next="+next);
         dispatcher.forward(req,resp);
     }
 
@@ -31,7 +34,9 @@ public class AuthLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String next = req.getParameter("next");
 
+        System.out.println("next: "+next);
         if (
                 !EmailUtil.validate(email)
                 ||
@@ -60,7 +65,11 @@ public class AuthLoginServlet extends HttpServlet {
                         session.setAttribute("role", user.getRole());
                         session.setAttribute("email", user.getEmail());
                         try {
-                            resp.sendRedirect("/book/list");
+                            if (next != null && !next.isEmpty()) {
+                                resp.sendRedirect(next);
+                            } else {
+                                resp.sendRedirect("/book/list");
+                            }
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
