@@ -5,6 +5,8 @@
     <persistence-unit name="g58">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>uz.pdp.project.entity.User</class>
+        <class>uz.pdp.project.entity.Upload</class>
+        <class>uz.pdp.project.entity.Book</class>
         <properties>
             <!-- Ma'lumotlar bazasi ulanish sozlamalari -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
