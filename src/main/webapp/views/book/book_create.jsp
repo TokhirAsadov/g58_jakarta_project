@@ -17,7 +17,34 @@
 </head>
 <body>
 <jsp:include page="/fragment/navbar.jsp"/>
-<h1>Create New Book</h1>
+<div class="container">
+    <form
+            style="width: 50%; margin: 0 auto;"
+            action="/admin/book/create"
+            method="post"
+            enctype="multipart/form-data"
+    >
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Tile:</label>
+            <input type="text" name="title" class="form-control" id="exampleInputEmail1" >
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author: </label>
+            <input type="text" name="author" class="form-control" id="author" >
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description: </label>
+            <textarea name="description" id="description" cols="80" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="file" class="form-label">File: </label>
+            <input type="file" name="file" class="form-control" id="file" >
+        </div>
+        <button type="submit" class="btn btn-primary">Create Book</button>
+        <a href="/book/list" class="btn btn-warning">Back</a>
+    </form>
+</div>
 
 </body>
 </html>
