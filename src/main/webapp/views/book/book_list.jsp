@@ -1,4 +1,6 @@
-<%--
+<%@ page import="uz.pdp.project.entity.Book" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: guval
   Date: 12/11/2025
@@ -18,7 +20,30 @@
 <body>
 <jsp:include page="/fragment/navbar.jsp" />
 
-<h1>Book List</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Original Name</th>
+            <th scope="col">Size</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${books}" var="book">
+            <tr>
+                <th scope="row">${book.getId()}</th>
+                <td>${book.getTitle()}</td>
+                <td>${book.getAuthor()}</td>
+                <td>${book.getFile().getOriginalName()}</td>
+                <td>${book.getFile().getSize()/1024/1024} MB</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
