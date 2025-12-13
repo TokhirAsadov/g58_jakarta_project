@@ -35,7 +35,8 @@
         <c:forEach items="${books}" var="book">
             <tr>
                 <th scope="row">${book.getId()}</th>
-                <td>${book.getTitle()}</td>
+                <td>
+                    <a href="/book/detail/${book.getId()}">${book.getTitle()}</a></td>
                 <td>${book.getAuthor()}</td>
                 <td>${book.getFile().getOriginalName()}</td>
                 <td>${book.getFile().getSize()/1024/1024} MB</td>
