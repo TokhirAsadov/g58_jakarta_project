@@ -40,7 +40,7 @@ public class SecurityFilter implements Filter {
             Object id = session.getAttribute("id");
             Object role = session.getAttribute("role");
             if (id == null) {
-                response.sendRedirect("/auth/login");
+                response.sendRedirect("/auth/login?next="+uri);
             } else {
                 if (Objects.equals("USER",role) && isAdminUrl.test(uri)) {
                     response.sendError(403);
