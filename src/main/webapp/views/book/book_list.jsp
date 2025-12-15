@@ -1,12 +1,5 @@
-<%@ page import="uz.pdp.project.entity.Book" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: guval
-  Date: 12/11/2025
-  Time: 3:49 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
